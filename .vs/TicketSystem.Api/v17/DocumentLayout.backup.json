@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\hspsz\\Documents\\Projects\\TicketSystem.Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|c:\\users\\hspsz\\documents\\projects\\ticketsystem.api\\sales\\valueobjects\\paymentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|solutionrelative:sales\\valueobjects\\paymentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|c:\\users\\hspsz\\documents\\projects\\ticketsystem.api\\events\\entities\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|solutionrelative:events\\entities\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|c:\\users\\hspsz\\documents\\projects\\ticketsystem.api\\sales\\entities\\ticketorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|solutionrelative:sales\\entities\\ticketorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|c:\\users\\hspsz\\documents\\projects\\ticketsystem.api\\sales\\valueobjects\\paymentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|solutionrelative:sales\\valueobjects\\paymentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|c:\\users\\hspsz\\documents\\projects\\ticketsystem.api\\users\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,10 +39,6 @@
       "RelativeMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|solutionrelative:events\\interfaces\\ieventrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|c:\\users\\hspsz\\documents\\projects\\ticketsystem.api\\events\\entities\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|solutionrelative:events\\entities\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|c:\\users\\hspsz\\documents\\projects\\ticketsystem.api\\sales\\interfaces\\iticketorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B5A63858-BB04-4526-B8B2-608A72221BD8}|TicketSystem.Api.csproj|solutionrelative:sales\\interfaces\\iticketorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -62,8 +62,7 @@
               "RelativeToolTip": "Sales\\Interfaces\\ITicketOrderRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T18:59:47.765Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-12T18:59:47.765Z"
             },
             {
               "$type": "Document",
@@ -73,14 +72,13 @@
               "RelativeDocumentMoniker": "Sales\\Entities\\TicketOrder.cs",
               "ToolTip": "C:\\Users\\hspsz\\Documents\\Projects\\TicketSystem.Api\\Sales\\Entities\\TicketOrder.cs",
               "RelativeToolTip": "Sales\\Entities\\TicketOrder.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACwAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T18:54:49.836Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-12T18:54:49.836Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "PaymentStatus.cs",
               "DocumentMoniker": "C:\\Users\\hspsz\\Documents\\Projects\\TicketSystem.Api\\Sales\\ValueObjects\\PaymentStatus.cs",
               "RelativeDocumentMoniker": "Sales\\ValueObjects\\PaymentStatus.cs",
@@ -88,12 +86,11 @@
               "RelativeToolTip": "Sales\\ValueObjects\\PaymentStatus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T18:53:23.238Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-12T18:53:23.238Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "IEventRepository.cs",
               "DocumentMoniker": "C:\\Users\\hspsz\\Documents\\Projects\\TicketSystem.Api\\Events\\Interfaces\\IEventRepository.cs",
               "RelativeDocumentMoniker": "Events\\Interfaces\\IEventRepository.cs",
@@ -101,25 +98,24 @@
               "RelativeToolTip": "Events\\Interfaces\\IEventRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T18:48:28.941Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-12T18:48:28.941Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "Event.cs",
               "DocumentMoniker": "C:\\Users\\hspsz\\Documents\\Projects\\TicketSystem.Api\\Events\\Entities\\Event.cs",
               "RelativeDocumentMoniker": "Events\\Entities\\Event.cs",
               "ToolTip": "C:\\Users\\hspsz\\Documents\\Projects\\TicketSystem.Api\\Events\\Entities\\Event.cs",
               "RelativeToolTip": "Events\\Entities\\Event.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAADwvyoAAABOAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAxwDMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-12T18:46:18.612Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Money.cs",
               "DocumentMoniker": "C:\\Users\\hspsz\\Documents\\Projects\\TicketSystem.Api\\Events\\ValueObjects\\Money.cs",
               "RelativeDocumentMoniker": "Events\\ValueObjects\\Money.cs",
@@ -127,12 +123,11 @@
               "RelativeToolTip": "Events\\ValueObjects\\Money.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T18:45:31.149Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-12T18:45:31.149Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\hspsz\\Documents\\Projects\\TicketSystem.Api\\Users\\Interfaces\\IUserRepository.cs",
               "RelativeDocumentMoniker": "Users\\Interfaces\\IUserRepository.cs",
@@ -140,12 +135,11 @@
               "RelativeToolTip": "Users\\Interfaces\\IUserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T18:41:29.511Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-12T18:41:29.511Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\hspsz\\Documents\\Projects\\TicketSystem.Api\\Users\\Entities\\User.cs",
               "RelativeDocumentMoniker": "Users\\Entities\\User.cs",
@@ -153,12 +147,11 @@
               "RelativeToolTip": "Users\\Entities\\User.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAkwCYAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T18:37:54.917Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-12T18:37:54.917Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Email.cs",
               "DocumentMoniker": "C:\\Users\\hspsz\\Documents\\Projects\\TicketSystem.Api\\Users\\ValueObjects\\Email.cs",
               "RelativeDocumentMoniker": "Users\\ValueObjects\\Email.cs",
@@ -166,12 +159,11 @@
               "RelativeToolTip": "Users\\ValueObjects\\Email.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T18:31:40.276Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-12T18:31:40.276Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "EntityBase.cs",
               "DocumentMoniker": "C:\\Users\\hspsz\\Documents\\Projects\\TicketSystem.Api\\Shared\\Entities\\EntityBase.cs",
               "RelativeDocumentMoniker": "Shared\\Entities\\EntityBase.cs",
@@ -179,8 +171,7 @@
               "RelativeToolTip": "Shared\\Entities\\EntityBase.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T12:03:05.406Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-12T12:03:05.406Z"
             }
           ]
         }
