@@ -4,7 +4,7 @@ using TicketSystem.Api.Shared.Entities;
 
 namespace TicketSystem.Api.Events.Entities
 {
-    public class Event : EntityBase
+    public class Event
     {
         public string Title { get; private set; }
         public string Description { get; private set; }

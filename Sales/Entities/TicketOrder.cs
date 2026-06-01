@@ -6,7 +6,7 @@ namespace TicketSystem.Api.Sales.Entities
 {
     public class TicketOrder : EntityBase
     {
-        // Referências aos outros Bounded Contexts (apenas os IDs)
+        // Referências aos IDs 
         public Guid EventId { get; private set; }
         public Guid UserId { get; private set; }
 

@@ -1,6 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using TicketSystem.Api.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// Configuração do banco de dados SQLite usando o seu TicketContext
+builder.Services.AddDbContext<TicketContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
