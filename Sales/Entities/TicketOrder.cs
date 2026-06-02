@@ -1,28 +1,37 @@
-﻿using System;
-using TicketSystem.Api.Sales.ValueObjects;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using TicketSystem.Api.Sales.ValueObjects; 
+
 namespace TicketSystem.Api.Sales.Entities
 {
     public class TicketOrder
     {
         public Guid Id { get; set; }
+        
         // Referências aos IDs 
         public Guid EventId { get; private set; }
         public Guid UserId { get; private set; }
         public int Quantity { get; private set; }
+        
+        public Money UnitPrice { get; private set; } 
+        
         public PaymentStatus Status { get; private set; }
-
 
         protected TicketOrder() { }//??
 
-        public TicketOrder(Guid eventId, Guid userId, int quantity)
+        public TicketOrder(Guid eventId, Guid userId, int quantity, Money unitPrice)
         {
-            if (eventId == Guid.Empty) throw new ArgumentException("ID evento inválido.");
-            if (userId == Guid.Empty) throw new ArgumentException("ID usuário inválido.");
+            if (eventId == Guid.Empty) throw new ArgumentException("O ID do evento é inválido.");
+            if (userId == Guid.Empty) throw new ArgumentException("O ID do usuário é inválido.");
             if (quantity <= 0) throw new ArgumentException("A quantidade de ingressos deve ser maior que zero.");
+            if (unitPrice == null) throw new ArgumentException("O preço unitário é obrigatório.");
 
             EventId = eventId;
             UserId = userId;
             Quantity = quantity;
+            UnitPrice = unitPrice;
 
             // Regra de negócio: Toda compra nasce como pendente aguardando pagamento
             Status = PaymentStatus.Pending;
@@ -35,7 +44,6 @@ namespace TicketSystem.Api.Sales.Entities
                 throw new InvalidOperationException("Apenas pedidos com status Pendente podem ser aprovados.");
 
             Status = PaymentStatus.Approved;
-            // UpdateTimestamp(); <-- Removido!
         }
 
         // status precisa estar pendente para ser rejeitado
@@ -45,7 +53,6 @@ namespace TicketSystem.Api.Sales.Entities
                 throw new InvalidOperationException("Apenas pedidos com status Pendente podem ser rejeitados.");
 
             Status = PaymentStatus.Rejected;
-            // UpdateTimestamp(); <-- Removido!
         }
 
         // se o pedido já tiver sido rejeitado, não pode ser cancelado novamente
@@ -56,6 +63,5 @@ namespace TicketSystem.Api.Sales.Entities
 
             Status = PaymentStatus.Rejected;
         }
-
     }
 }
