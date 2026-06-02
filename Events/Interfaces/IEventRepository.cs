@@ -7,9 +7,10 @@ namespace TicketSystem.Api.Events.Interfaces
 {
     public interface IEventRepository
     {
-        Task<Event> GetByIdAsync(Guid id);
-        Task<IEnumerable<Event>> GetAllUpcomingEventsAsync(); 
         Task AddAsync(Event eventEntity);
-        Task UpdateAsync(Event eventEntity);
+        Task<Event> GetByIdAsync(Guid id);
+        Task<IEnumerable<Event>> GetAllAsync(); // Read (Lista)
+        Task UpdateAsync(Event eventEntity);     // Update
+        Task DeleteAsync(Guid id);               // Delete
     }
 }

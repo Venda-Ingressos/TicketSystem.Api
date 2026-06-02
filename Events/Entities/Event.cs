@@ -1,11 +1,11 @@
 ﻿using System;
 using TicketSystem.Api.Events.ValueObjects;
-using TicketSystem.Api.Shared.Entities;
 
 namespace TicketSystem.Api.Events.Entities
 {
     public class Event
     {
+        public Guid Id { get; set; }
         public string Title { get; private set; }
         public string Description { get; private set; }
         public DateTime Date { get; private set; }
@@ -16,7 +16,9 @@ namespace TicketSystem.Api.Events.Entities
 
         public Event(string title, string description, DateTime date, int totalCapacity, Money ticketPrice)
         {
+            // Chamando a validação ANTES de atribuir os valores (Regra de Ouro do DDD)
             ValidateDomain(title, date, totalCapacity);
+
             Title = title;
             Description = description;
             Date = date;

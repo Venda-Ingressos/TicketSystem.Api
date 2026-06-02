@@ -1,11 +1,12 @@
 ﻿using System;
-using TicketSystem.Api.Shared.Entities;
 using TicketSystem.Api.Sales.ValueObjects;
 
 namespace TicketSystem.Api.Sales.Entities
 {
-    public class TicketOrder : EntityBase
+    public class TicketOrder
     {
+        public Guid Id { get; set; }
+
         // Referências aos IDs 
         public Guid EventId { get; private set; }
         public Guid UserId { get; private set; }
@@ -28,21 +29,23 @@ namespace TicketSystem.Api.Sales.Entities
             // Regra de negócio: Toda compra nasce como pendente aguardando pagamento
             Status = PaymentStatus.Pending;
         }
+
         public void ApprovePayment()
         {
             if (Status != PaymentStatus.Pending)
                 throw new InvalidOperationException("Apenas pedidos com status Pendente podem ser aprovados.");
 
             Status = PaymentStatus.Approved;
-            UpdateTimestamp();
+            // UpdateTimestamp(); <-- Removido!
         }
+
         public void RejectPayment()
         {
             if (Status != PaymentStatus.Pending)
                 throw new InvalidOperationException("Apenas pedidos com status Pendente podem ser rejeitados.");
 
             Status = PaymentStatus.Rejected;
-            UpdateTimestamp();
+            // UpdateTimestamp(); <-- Removido!
         }
     }
 }

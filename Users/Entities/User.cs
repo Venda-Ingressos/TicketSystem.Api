@@ -1,13 +1,14 @@
 ﻿using System;
-using TicketSystem.Api.Shared.Entities;
 using TicketSystem.Api.Users.ValueObjects;
 
 namespace TicketSystem.Api.Users.Entities
 {
-    public class User : EntityBase
+    public class User
     {
+        public Guid Id { get; set; }
         public string Name { get; private set; }
         public Email Email { get; private set; }
+
         protected User() { }
 
         public User(string name, Email email)
@@ -23,7 +24,7 @@ namespace TicketSystem.Api.Users.Entities
             ValidateDomain(name, email);
             Name = name;
             Email = email;
-            UpdateTimestamp(); 
+            // UpdateTimestamp(); <-- Removido!
         }
 
         // Regra de negócio/validação dentro da Entidade

@@ -20,10 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Events\Controllers\" />
-    <Folder Include="Events\DTOs\" />
-    <Folder Include="Events\UseCases\" />
-    <Folder Include="Events\Repositories\" />
     <Folder Include="Sales\Controllers\" />
     <Folder Include="Sales\DTOs\" />
     <Folder Include="Sales\Repositories\" />

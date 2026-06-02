@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TicketSystem.Api.Shared.Entities;
-using TicketSystem.Api.Shered.Entities;
 
-namespace TicketSystem.Api.Data
+namespace TicketSystem.Api.Shared.Data
 {
     public class TicketContext : DbContext
     {
