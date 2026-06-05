@@ -2,8 +2,8 @@
 {
     public enum PaymentStatus
     {
-        Pending = 1,  // Pendente
-        Approved = 2, // Aprovado
-        Rejected = 3  // Rejeitado/Cancelado
+        Pending = 1,
+        Approved = 2,
+        Rejected = 3  
     }
 }
