@@ -7,12 +7,10 @@ namespace TicketSystem.Api.Sales.Interfaces
 {
     public interface ITicketOrderRepository
     {
-        Task<TicketOrder> GetByIdAsync(Guid id);
-         // lista de pedidos por usuário
-        Task<IEnumerable<TicketOrder>> GetByUserIdAsync(Guid userId); 
-        Task AddAsync(TicketOrder order);
-        Task UpdateAsync(TicketOrder order);
-        // função para obter o total de ingressos vendidos para um evento específico
-        Task<int> GetTotalTicketsSoldForEventAsync(Guid eventId);
+        Task<TicketOrder> GetById(Guid id); // feito
+        Task<IEnumerable<TicketOrder>> GetByUserId(Guid userId);
+        Task Add(TicketOrder order); // feito
+        Task Update(TicketOrder order);
+        Task<int> GetTotalTicketsSoldForEvent(Guid eventId);
     }
 }

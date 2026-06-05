@@ -1,97 +1,98 @@
-// using System;
-// using System.Collections.Generic;
-// using System.Linq;
-// using System.Threading.Tasks;
-// using Microsoft.EntityFrameworkCore;
-// using TicketSystem.Api.Sales.Interfaces;
-// using TicketSystem.Api.Sales.ValueObjects;
-// using TicketSystem.Api.Shared.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using TicketSystem.Api.Sales.Interfaces;
+using TicketSystem.Api.Sales.ValueObjects;
+using TicketSystem.Api.Shared.Data;
 
-// using DomainTicketOrder = TicketSystem.Api.Sales.Entities.TicketOrder;
-// using SharedTicketOrder = TicketSystem.Api.Shared.Entities.TicketOrder;
+using DomainOrder = TicketSystem.Api.Sales.Entities.TicketOrder;
+using SharedOrder = TicketSystem.Api.Shared.Entities.TicketOrder;
 
-// namespace TicketSystem.Api.Sales.Repositories
-// {
-//     public class TicketOrderRepository : ITicketOrderRepository
-//     {
-//         private readonly TicketContext _context;
+namespace TicketSystem.Api.Sales.Repositories
+{
+    public class TicketOrderRepository : ITicketOrderRepository
+    {
+        private readonly TicketContext _context;
+        public TicketOrderRepository(TicketContext context)
+        {
+            _context = context;
+        }
 
-//         public TicketOrderRepository(TicketContext context)
-//         {
-//             _context = context;
-//         }
+        public async Task Add(DomainOrder order)
+        {
+            var sharedOrder = new SharedOrder
+            {
+                Id = order.Id == Guid.Empty ? Guid.NewGuid() : order.Id,
+                EventId = order.EventId,
+                UserId = order.UserId,
+                Quantity = order.Quantity,
+                Status = (int)order.Status
+            };
 
-//         public async Task<DomainTicketOrder> GetByIdAsync(Guid id)
-//         {
-//             var sharedOrder = await _context.TicketOrders.FindAsync(id);
-//             return sharedOrder == null ? null : MapToDomain(sharedOrder);
-//         }
+            _context.TicketOrders.Add(sharedOrder);
+            await _context.SaveChangesAsync();
+            order.Id = sharedOrder.Id;
+        }
 
-//         public async Task<IEnumerable<DomainTicketOrder>> GetByUserIdAsync(Guid userId)
-//         {
-//             var sharedOrders = await _context.TicketOrders
-//                 .Where(order => order.UserId == userId)
-//                 .ToListAsync();
+        public async Task<DomainOrder> GetById(Guid id)
+        {
+            var sharedOrder = await _context.TicketOrders.FindAsync(id);
+            if (sharedOrder == null) return null;
 
-//             return sharedOrders.Select(MapToDomain);
-//         }
+            return MapToDomain(sharedOrder);
+        }
 
-//         public async Task AddAsync(DomainTicketOrder order)
-//         {
-//             var sharedOrder = new SharedTicketOrder
-//             {
-//                 EventId = order.EventId,
-//                 UserId = order.UserId,
-//                 Quantity = order.Quantity,
-//                 Status = (int)order.Status
-//             };
+        public async Task<IEnumerable<DomainOrder>> GetByUserId(Guid userId)
+        {
+            var sharedOrders = await _context.TicketOrders
+                .Where(o => o.UserId == userId)
+                .ToListAsync();
 
-//             await _context.TicketOrders.AddAsync(sharedOrder);
-//             await _context.SaveChangesAsync();
-//             order.Id = sharedOrder.Id;
-//         }
+            return sharedOrders.Select(MapToDomain);
+        }
 
-//         public async Task UpdateAsync(DomainTicketOrder order)
-//         {
-//             var sharedOrder = await _context.TicketOrders.FindAsync(order.Id);
-//             if (sharedOrder == null)
-//             {
-//                 return;
-//             }
+        public async Task Update(DomainOrder order)
+        {
+            var sharedOrder = await _context.TicketOrders.FindAsync(order.Id);
 
-//             sharedOrder.EventId = order.EventId;
-//             sharedOrder.UserId = order.UserId;
-//             sharedOrder.Quantity = order.Quantity;
-//             sharedOrder.Status = (int)order.Status;
+            if (sharedOrder != null)
+            {
+                sharedOrder.EventId = order.EventId;
+                sharedOrder.UserId = order.UserId;
+                sharedOrder.Quantity = order.Quantity;
+                sharedOrder.Status = (int)order.Status;
 
-//             _context.TicketOrders.Update(sharedOrder);
-//             await _context.SaveChangesAsync();
-//         }
+                _context.TicketOrders.Update(sharedOrder);
+                await _context.SaveChangesAsync();
+            }
+        }
 
-//         public async Task<int> GetTotalTicketsSoldForEventAsync(Guid eventId)
-//         {
-//             return await _context.TicketOrders
-//                 .Where(order => order.EventId == eventId && order.Status == (int)PaymentStatus.Approved)
-//                 .SumAsync(order => order.Quantity);
-//         }
+        public async Task<int> GetTotalTicketsSoldForEvent(Guid eventId)
+        {
+            return await _context.TicketOrders
+                .Where(o => o.EventId == eventId && o.Status == (int)PaymentStatus.Approved)
+                .SumAsync(o => o.Quantity);
+        }
 
-//         private static DomainTicketOrder MapToDomain(SharedTicketOrder sharedOrder)
-//         {
-//             var domainOrder = new DomainTicketOrder(sharedOrder.EventId, sharedOrder.UserId, sharedOrder.Quantity)
-//             {
-//                 Id = sharedOrder.Id
-//             };
+        private static DomainOrder MapToDomain(SharedOrder sharedOrder)
+        {
+            var order = new DomainOrder(sharedOrder.EventId, sharedOrder.UserId, sharedOrder.Quantity)
+            {
+                Id = sharedOrder.Id
+            };
 
-//             if (sharedOrder.Status == (int)PaymentStatus.Approved)
-//             {
-//                 domainOrder.ApprovePayment();
-//             }
-//             else if (sharedOrder.Status == (int)PaymentStatus.Rejected)
-//             {
-//                 domainOrder.RejectPayment();
-//             }
+            if (sharedOrder.Status == (int)PaymentStatus.Approved)
+            {
+                order.ApprovePayment();
+            }
+            else if (sharedOrder.Status == (int)PaymentStatus.Rejected)
+            {
+                order.RejectPayment();
+            }
 
-//             return domainOrder;
-//         }
-//     }
-// }
+            return order;
+        }
+    }
+}

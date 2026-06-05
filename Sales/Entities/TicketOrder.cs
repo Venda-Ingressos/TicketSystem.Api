@@ -1,43 +1,30 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TicketSystem.Api.Sales.ValueObjects; 
+using TicketSystem.Api.Sales.ValueObjects;
 
 namespace TicketSystem.Api.Sales.Entities
 {
     public class TicketOrder
     {
         public Guid Id { get; set; }
-        
-        // Referências aos IDs 
         public Guid EventId { get; private set; }
         public Guid UserId { get; private set; }
         public int Quantity { get; private set; }
-        
-        public Money UnitPrice { get; private set; } 
-        
         public PaymentStatus Status { get; private set; }
 
-        protected TicketOrder() { }//??
+        protected TicketOrder() { }
 
-        public TicketOrder(Guid eventId, Guid userId, int quantity, Money unitPrice)
+        public TicketOrder(Guid eventId, Guid userId, int quantity)
         {
             if (eventId == Guid.Empty) throw new ArgumentException("O ID do evento é inválido.");
             if (userId == Guid.Empty) throw new ArgumentException("O ID do usuário é inválido.");
             if (quantity <= 0) throw new ArgumentException("A quantidade de ingressos deve ser maior que zero.");
-            if (unitPrice == null) throw new ArgumentException("O preço unitário é obrigatório.");
 
             EventId = eventId;
             UserId = userId;
             Quantity = quantity;
-            UnitPrice = unitPrice;
-
-            // Regra de negócio: Toda compra nasce como pendente aguardando pagamento
             Status = PaymentStatus.Pending;
         }
 
-        // status precisa estar pendente para ser aprovado
         public void ApprovePayment()
         {
             if (Status != PaymentStatus.Pending)
@@ -46,7 +33,6 @@ namespace TicketSystem.Api.Sales.Entities
             Status = PaymentStatus.Approved;
         }
 
-        // status precisa estar pendente para ser rejeitado
         public void RejectPayment()
         {
             if (Status != PaymentStatus.Pending)
@@ -55,11 +41,10 @@ namespace TicketSystem.Api.Sales.Entities
             Status = PaymentStatus.Rejected;
         }
 
-        // se o pedido já tiver sido rejeitado, não pode ser cancelado novamente
         public void CancelOrder()
         {
             if (Status == PaymentStatus.Rejected)
-                throw new Exception("Order is already canceled.");
+                throw new InvalidOperationException("O pedido ja esta cancelado.");
 
             Status = PaymentStatus.Rejected;
         }
