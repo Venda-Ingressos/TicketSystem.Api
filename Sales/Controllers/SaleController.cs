@@ -47,8 +47,14 @@ namespace TicketSystem.Api.Sales.Controllers
                     message = "Venda realizada com sucesso!"
                 });
             }
+            catch (ArgumentException ex)
+            {
+                // 400
+                return BadRequest(new { error = ex.Message });
+            }
             catch (Exception ex)
             {
+                // 500 ou 400 dependendo do tipo de erro
                 return BadRequest(new { error = ex.Message });
             }
         }
@@ -61,8 +67,14 @@ namespace TicketSystem.Api.Sales.Controllers
                 var order = await _getSaleByIdUseCase.ExecuteAsync(id);
                 return Ok(order);
             }
+            catch (KeyNotFoundException ex)
+            {
+                // 404
+                return NotFound(new { error = ex.Message });
+            }
             catch (Exception ex)
             {
+                // 500 ou 400 dependendo do tipo de erro
                 return BadRequest(new { error = ex.Message });
             }
         }
@@ -81,8 +93,14 @@ namespace TicketSystem.Api.Sales.Controllers
                     totalTicketsSold = totalSold
                 });
             }
+            catch (ArgumentException ex)
+            {
+                // 400
+                return BadRequest(new { error = ex.Message });
+            }
             catch (Exception ex)
             {
+                // 500 ou 400 dependendo do tipo de erro
                 return BadRequest(new { error = ex.Message });
             }
         }
@@ -96,8 +114,14 @@ namespace TicketSystem.Api.Sales.Controllers
                 var sales = await _getSalesByUserIdUseCase.ExecuteAsync(userId);
                 return Ok(sales);
             }
+            catch (ArgumentException ex)
+            {
+                // 400
+                return BadRequest(new { error = ex.Message });
+            }
             catch (Exception ex)
             {
+                // 500 ou 400 dependendo do tipo de erro
                 return BadRequest(new { error = ex.Message });
             }
         }
@@ -111,8 +135,19 @@ namespace TicketSystem.Api.Sales.Controllers
                 await _approveSaleUseCase.ExecuteAsync(id);
                 return Ok(new { message = "Venda aprovada com sucesso!" });
             }
+            catch (KeyNotFoundException ex)
+            {
+                // 404
+                return NotFound(new { error = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                // 400
+                return BadRequest(new { error = ex.Message });
+            }
             catch (Exception ex)
             {
+                // 500 ou 400 dependendo do tipo de erro
                 return BadRequest(new { error = ex.Message });
             }
         }
@@ -126,8 +161,19 @@ namespace TicketSystem.Api.Sales.Controllers
                 await _rejectSaleUseCase.ExecuteAsync(id);
                 return Ok(new { message = "Venda rejeitada com sucesso!" });
             }
+            catch (KeyNotFoundException ex)
+            {
+                // 404
+                return NotFound(new { error = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                // 400
+                return BadRequest(new { error = ex.Message });
+            }
             catch (Exception ex)
             {
+                // 500 ou 400 dependendo do tipo de erro
                 return BadRequest(new { error = ex.Message });
             }
         }
@@ -141,8 +187,19 @@ namespace TicketSystem.Api.Sales.Controllers
                 await _cancelSaleUseCase.ExecuteAsync(id);
                 return Ok(new { message = "Venda cancelada com sucesso!" });
             }
+            catch (KeyNotFoundException ex)
+            {
+                // 404
+                return NotFound(new { error = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                // 400
+                return BadRequest(new { error = ex.Message });
+            }
             catch (Exception ex)
             {
+                // 500 ou 400 dependendo do tipo de erro
                 return BadRequest(new { error = ex.Message });
             }
         }

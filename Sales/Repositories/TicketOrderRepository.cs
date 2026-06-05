@@ -20,6 +20,7 @@ namespace TicketSystem.Api.Sales.Repositories
             _context = context;
         }
 
+        // adicionar nova venda
         public async Task Add(DomainOrder order)
         {
             var sharedOrder = new SharedOrder
@@ -36,6 +37,7 @@ namespace TicketSystem.Api.Sales.Repositories
             order.Id = sharedOrder.Id;
         }
 
+        // obter venda por id
         public async Task<DomainOrder> GetById(Guid id)
         {
             var sharedOrder = await _context.TicketOrders.FindAsync(id);
@@ -44,6 +46,7 @@ namespace TicketSystem.Api.Sales.Repositories
             return MapToDomain(sharedOrder);
         }
 
+        // obter vendas por usuário
         public async Task<IEnumerable<DomainOrder>> GetByUserId(Guid userId)
         {
             var sharedOrders = await _context.TicketOrders
@@ -53,6 +56,7 @@ namespace TicketSystem.Api.Sales.Repositories
             return sharedOrders.Select(MapToDomain);
         }
 
+        // atualizar status da venda
         public async Task Update(DomainOrder order)
         {
             var sharedOrder = await _context.TicketOrders.FindAsync(order.Id);
@@ -69,6 +73,7 @@ namespace TicketSystem.Api.Sales.Repositories
             }
         }
 
+        // total de ingressos vendidos para um evento
         public async Task<int> GetTotalTicketsSoldForEvent(Guid eventId)
         {
             return await _context.TicketOrders
@@ -76,6 +81,7 @@ namespace TicketSystem.Api.Sales.Repositories
                 .SumAsync(o => o.Quantity);
         }
 
+        // mapeamento entre SharedOrder e DomainOrder (nao entendi muito bem o motivo disso, mas ok)
         private static DomainOrder MapToDomain(SharedOrder sharedOrder)
         {
             var order = new DomainOrder(sharedOrder.EventId, sharedOrder.UserId, sharedOrder.Quantity)

@@ -18,7 +18,7 @@ namespace TicketSystem.Api.Sales.UseCases
             var order = await _ticketOrderRepository.GetById(saleId);
 
             if (order == null)
-                throw new Exception("Venda não encontrada.");
+                throw new KeyNotFoundException("Venda não encontrada.");
 
             order.RejectPayment();
             await _ticketOrderRepository.Update(order);
