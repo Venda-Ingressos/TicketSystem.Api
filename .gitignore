@@ -23,3 +23,13 @@ packages/
 
 # dotnet watch
 .watch/
+
+# Ignore local launch settings and user-specific files
+appsettings.*.json
+
+# Rider
+/.idea/
+
+# Editor directories and files
+*.code-workspace
+
