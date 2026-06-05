@@ -12,15 +12,24 @@ namespace TicketSystem.Api.Sales.Controllers
         private readonly CreateTicketOrderUseCase _createTicketOrderUseCase;
         private readonly GetSaleByIdUseCase _getSaleByIdUseCase;
         private readonly GetTotalTicketsSoldForEventUseCase _getTotalTicketsSoldForEventUseCase;
+        private readonly GetSalesByUserIdUseCase _getSalesByUserIdUseCase;
+        private readonly ApproveSaleUseCase _approveSaleUseCase;
+        private readonly RejectSaleUseCase _rejectSaleUseCase;
 
         public SaleController(
             CreateTicketOrderUseCase createTicketOrderUseCase,
             GetSaleByIdUseCase getSaleByIdUseCase,
-            GetTotalTicketsSoldForEventUseCase getTotalTicketsSoldForEventUseCase)
+            GetTotalTicketsSoldForEventUseCase getTotalTicketsSoldForEventUseCase,
+            GetSalesByUserIdUseCase getSalesByUserIdUseCase,
+            ApproveSaleUseCase approveSaleUseCase,
+            RejectSaleUseCase rejectSaleUseCase)
         {
             _createTicketOrderUseCase = createTicketOrderUseCase;
             _getSaleByIdUseCase = getSaleByIdUseCase;
             _getTotalTicketsSoldForEventUseCase = getTotalTicketsSoldForEventUseCase;
+            _getSalesByUserIdUseCase = getSalesByUserIdUseCase;
+            _approveSaleUseCase = approveSaleUseCase;
+            _rejectSaleUseCase = rejectSaleUseCase;
         }
         //nova venda
         [HttpPost]
@@ -68,6 +77,51 @@ namespace TicketSystem.Api.Sales.Controllers
                     eventId = eventId,
                     totalTicketsSold = totalSold
                 });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+        }
+        
+        // vendas por usuário
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetSalesByUserId(Guid userId)
+        {
+            try
+            {
+                var sales = await _getSalesByUserIdUseCase.ExecuteAsync(userId);
+                return Ok(sales);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+        }
+
+        // Aprovar venda
+        [HttpPut("{id}/approve")]
+        public async Task<IActionResult> ApproveSale(Guid id)
+        {
+            try
+            {
+                await _approveSaleUseCase.ExecuteAsync(id);
+                return Ok(new { message = "Venda aprovada com sucesso!" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+        }
+
+        // Rejeitar venda
+        [HttpPut("{id}/reject")]
+        public async Task<IActionResult> RejectSale(Guid id)
+        {
+            try
+            {
+                await _rejectSaleUseCase.ExecuteAsync(id);
+                return Ok(new { message = "Venda rejeitada com sucesso!" });
             }
             catch (Exception ex)
             {

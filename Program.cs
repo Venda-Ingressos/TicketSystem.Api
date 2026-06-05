@@ -20,16 +20,24 @@ builder.Services.AddDbContext<TicketContext>(options =>
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<ITicketOrderRepository, TicketOrderRepository>();
 
-// Use Cases: Events
+// UseCases: Events
 builder.Services.AddScoped<CreateEventUseCase>();
 builder.Services.AddScoped<GetAllEventsUseCase>();
 builder.Services.AddScoped<UpdateEventUseCase>();
 builder.Services.AddScoped<DeleteEventUseCase>();
 
-// Use Cases: Sales
+// UseCases: Sales
+// criar venda
 builder.Services.AddScoped<CreateTicketOrderUseCase>();
+// obter venda por id
 builder.Services.AddScoped<GetSaleByIdUseCase>();
+// total de ingressos vendidos por evento
 builder.Services.AddScoped<GetTotalTicketsSoldForEventUseCase>();
+// obter vendas por usuário
+builder.Services.AddScoped<GetSalesByUserIdUseCase>();
+// mudar status da venda
+builder.Services.AddScoped<ApproveSaleUseCase>();
+builder.Services.AddScoped<RejectSaleUseCase>();
 
 // Controllers
 builder.Services.AddControllers();

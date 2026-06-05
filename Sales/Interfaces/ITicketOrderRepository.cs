@@ -8,9 +8,9 @@ namespace TicketSystem.Api.Sales.Interfaces
     public interface ITicketOrderRepository
     {
         Task<TicketOrder> GetById(Guid id); // feito
-        Task<IEnumerable<TicketOrder>> GetByUserId(Guid userId);
+        Task<IEnumerable<TicketOrder>> GetByUserId(Guid userId); // feito
         Task Add(TicketOrder order); // feito
         Task Update(TicketOrder order);
-        Task<int> GetTotalTicketsSoldForEvent(Guid eventId);
+        Task<int> GetTotalTicketsSoldForEvent(Guid eventId); // feito
     }
 }
