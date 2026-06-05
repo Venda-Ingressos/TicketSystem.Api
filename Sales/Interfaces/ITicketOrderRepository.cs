@@ -10,7 +10,7 @@ namespace TicketSystem.Api.Sales.Interfaces
         Task<TicketOrder> GetById(Guid id); // feito
         Task<IEnumerable<TicketOrder>> GetByUserId(Guid userId); // feito
         Task Add(TicketOrder order); // feito
-        Task Update(TicketOrder order);
+        Task Update(TicketOrder order); // feito
         Task<int> GetTotalTicketsSoldForEvent(Guid eventId); // feito
     }
 }

@@ -15,6 +15,7 @@ namespace TicketSystem.Api.Sales.Controllers
         private readonly GetSalesByUserIdUseCase _getSalesByUserIdUseCase;
         private readonly ApproveSaleUseCase _approveSaleUseCase;
         private readonly RejectSaleUseCase _rejectSaleUseCase;
+        private readonly CancelSaleUseCase _cancelSaleUseCase;
 
         public SaleController(
             CreateTicketOrderUseCase createTicketOrderUseCase,
@@ -22,7 +23,8 @@ namespace TicketSystem.Api.Sales.Controllers
             GetTotalTicketsSoldForEventUseCase getTotalTicketsSoldForEventUseCase,
             GetSalesByUserIdUseCase getSalesByUserIdUseCase,
             ApproveSaleUseCase approveSaleUseCase,
-            RejectSaleUseCase rejectSaleUseCase)
+            RejectSaleUseCase rejectSaleUseCase,
+            CancelSaleUseCase cancelSaleUseCase)
         {
             _createTicketOrderUseCase = createTicketOrderUseCase;
             _getSaleByIdUseCase = getSaleByIdUseCase;
@@ -30,6 +32,7 @@ namespace TicketSystem.Api.Sales.Controllers
             _getSalesByUserIdUseCase = getSalesByUserIdUseCase;
             _approveSaleUseCase = approveSaleUseCase;
             _rejectSaleUseCase = rejectSaleUseCase;
+            _cancelSaleUseCase = cancelSaleUseCase;
         }
         //nova venda
         [HttpPost]
@@ -83,7 +86,7 @@ namespace TicketSystem.Api.Sales.Controllers
                 return BadRequest(new { error = ex.Message });
             }
         }
-        
+
         // vendas por usuário
         [HttpGet("user/{userId}")]
         public async Task<IActionResult> GetSalesByUserId(Guid userId)
@@ -122,6 +125,21 @@ namespace TicketSystem.Api.Sales.Controllers
             {
                 await _rejectSaleUseCase.ExecuteAsync(id);
                 return Ok(new { message = "Venda rejeitada com sucesso!" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+        }
+
+        // Cancelar venda
+        [HttpPut("{id}/cancel")]
+        public async Task<IActionResult> CancelSale(Guid id)
+        {
+            try
+            {
+                await _cancelSaleUseCase.ExecuteAsync(id);
+                return Ok(new { message = "Venda cancelada com sucesso!" });
             }
             catch (Exception ex)
             {

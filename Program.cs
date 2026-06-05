@@ -38,6 +38,7 @@ builder.Services.AddScoped<GetSalesByUserIdUseCase>();
 // mudar status da venda
 builder.Services.AddScoped<ApproveSaleUseCase>();
 builder.Services.AddScoped<RejectSaleUseCase>();
+builder.Services.AddScoped<CancelSaleUseCase>();
 
 // Controllers
 builder.Services.AddControllers();
