@@ -1,0 +1,25 @@
+# Build artifacts
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# NuGet
+*.nupkg
+packages/
+
+# Logs
+*.log
+
+# dotnet watch
+.watch/
