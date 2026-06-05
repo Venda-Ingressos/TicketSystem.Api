@@ -6,7 +6,11 @@ using TicketSystem.Api.Sales.Interfaces;
 using TicketSystem.Api.Sales.Repositories;
 using TicketSystem.Api.Sales.UseCases;
 using TicketSystem.Api.Shared.Data;
+using TicketSystem.Api.Users.Interfaces;
+using TicketSystem.Api.Users.Repositories;
+using TicketSystem.Api.Users.UseCases;
 
+//injecoes de dependencias e configuracao do banco de dados
 var builder = WebApplication.CreateBuilder(args);
 
 // DbContext
@@ -19,6 +23,7 @@ builder.Services.AddDbContext<TicketContext>(options =>
 // Repositories
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<ITicketOrderRepository, TicketOrderRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // UseCases: Events
 builder.Services.AddScoped<CreateEventUseCase>();
@@ -39,6 +44,12 @@ builder.Services.AddScoped<GetSalesByUserIdUseCase>();
 builder.Services.AddScoped<ApproveSaleUseCase>();
 builder.Services.AddScoped<RejectSaleUseCase>();
 builder.Services.AddScoped<CancelSaleUseCase>();
+
+// UseCases: Users
+builder.Services.AddScoped<CreateUserUseCase>();
+builder.Services.AddScoped<GetUserByIdUseCase>();
+builder.Services.AddScoped<GetUserByEmailUseCase>();
+builder.Services.AddScoped<UpdateUserUseCase>();
 
 // Controllers
 builder.Services.AddControllers();

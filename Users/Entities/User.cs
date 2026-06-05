@@ -18,16 +18,16 @@ namespace TicketSystem.Api.Users.Entities
             Email = email;
         }
 
-        // Método para alterar dados, garantindo que a entidade sempre seja válida (DDD)
+        // Método para alterar dados, garantindo que a entidade sempre seja válida
         public void UpdateInfo(string name, Email email)
         {
             ValidateDomain(name, email);
             Name = name;
             Email = email;
-            // UpdateTimestamp(); <-- Removido!
+            // UpdateTimestamp()= Removido!
         }
 
-        // Regra de negócio/validação dentro da Entidade
+        // validando a Entidade
         private void ValidateDomain(string name, Email email)
         {
             if (string.IsNullOrWhiteSpace(name))

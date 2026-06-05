@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/Users/kaua/Desktop/TicketSystem.Api/TicketSystem.Api.csproj": {}
+    "C:\\Users\\Duda\\Documents\\GitHub\\TicketSystem.Api\\TicketSystem.Api.csproj": {}
   },
   "projects": {
-    "/Users/kaua/Desktop/TicketSystem.Api/TicketSystem.Api.csproj": {
+    "C:\\Users\\Duda\\Documents\\GitHub\\TicketSystem.Api\\TicketSystem.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/kaua/Desktop/TicketSystem.Api/TicketSystem.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Duda\\Documents\\GitHub\\TicketSystem.Api\\TicketSystem.Api.csproj",
         "projectName": "TicketSystem.Api",
-        "projectPath": "/Users/kaua/Desktop/TicketSystem.Api/TicketSystem.Api.csproj",
-        "packagesPath": "/Users/kaua/.nuget/packages/",
-        "outputPath": "/Users/kaua/Desktop/TicketSystem.Api/obj/",
+        "projectPath": "C:\\Users\\Duda\\Documents\\GitHub\\TicketSystem.Api\\TicketSystem.Api.csproj",
+        "packagesPath": "C:\\Users\\Duda\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Duda\\Documents\\GitHub\\TicketSystem.Api\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/kaua/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Duda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -84,11 +90,15 @@
               "version": "[8.0.27, 8.0.27]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.osx-arm64",
+              "name": "Microsoft.NETCore.App.Host.win-x64",
               "version": "[8.0.27, 8.0.27]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.27, 8.0.27]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
               "version": "[8.0.27, 8.0.27]"
             }
           ],
@@ -100,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
