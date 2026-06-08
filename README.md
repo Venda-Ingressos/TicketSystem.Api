@@ -6,11 +6,12 @@ Este projeto foi construído focando nos princípios de **Clean Architecture** (
 
 ## 🚀 Tecnologias Utilizadas
 
-* **Linguagem:** C# (.NET)
+* **Linguagem:** C# (.NET), Swift
 * **Acesso a Dados:** Entity Framework Core (EF Core)
 * **Banco de Dados:** MySQL
 * **Documentação da API:** Swagger / OpenAPI
 * **Padrões de Projeto:** Repository Pattern, Use Cases, Value Objects, Separação de Entidades de Domínio vs. Modelos de Persistência.
+*  **SwiftUI, Alamofire**
 
 ## 🏗️ Arquitetura e Estrutura do Projeto
 
